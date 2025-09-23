@@ -16,9 +16,7 @@ function adicionarAmigo() {
     }
 
     amigos.push(nome);
-
     atualizarLista();
-
     input.value = "";
 }
 
@@ -26,11 +24,28 @@ function atualizarLista() {
     let lista = document.getElementById("listaAmigos");
     lista.innerHTML = "";
 
-    amigos.forEach((amigo) => {
+    amigos.forEach((amigo, index) => {
         let li = document.createElement("li");
         li.textContent = amigo;
+
+        let btnRemover = document.createElement("button");
+        btnRemover.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>`;
+        btnRemover.onclick = function () {
+            removerAmigo(index);
+        };
+
+        li.appendChild(btnRemover);
         lista.appendChild(li);
     });
+}
+
+function removerAmigo(index) {
+    amigos.splice(index, 1);
+    atualizarLista();
 }
 
 function sortearAmigo() {
@@ -39,8 +54,32 @@ function sortearAmigo() {
         return;
     }
 
-    let sorteado = amigos[Math.floor(Math.random() * amigos.length)];
-    let resultado = document.getElementById("resultado");
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = ""; 
 
-    resultado.innerHTML = `<li>O amigo secreto sorteado é: <strong>${sorteado}</strong></li>`;
+    let tempoAnimacao = 3000; 
+    let intervalo = 200; 
+    let contador = 0;
+
+    const animacao = setInterval(() => {
+        let nomeAleatorio = amigos[Math.floor(Math.random() * amigos.length)];
+        resultado.innerHTML = `<li>O amigo secreto é: <strong>${nomeAleatorio}</strong></li>`;
+        contador += intervalo;
+        if (contador >= tempoAnimacao) {
+            clearInterval(animacao);
+        }
+    }, intervalo);
 }
+
+document.addEventListener("keydown", function(event) {
+    const input = document.getElementById("amigo");
+
+    if (event.key === "Enter") {
+        if (document.activeElement === input) {
+            adicionarAmigo();
+        }
+    } else if (event.key === " " || event.key === "Spacebar") {
+        event.preventDefault();
+        sortearAmigo();
+    }
+});

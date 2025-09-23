@@ -8,7 +8,6 @@
     --color-white: #FFFFFF;
 }
 
-/* Estilos gerais */
 * {
     margin: 0;
     padding: 0;
@@ -30,20 +29,19 @@ body {
     width: 100%;
 }
 
-/* Banner */
 .header-banner {
     flex: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 40px 0 0;
+    width: 5px 0 0
 }
 
-/* Seção de entrada */
 .input-section {
     flex: 60%;
     background-color: var(--color-secondary);
-    border: 1px solid #000;
+    border: 1px solid #000000;
     border-radius: 64px 64px 0 0;
     display: flex;
     flex-direction: column;
@@ -52,7 +50,6 @@ body {
     width: 100%;
 }
 
-/* Títulos */
 .main-title {
     font-size: 48px;
     font-family: "Merriweather", serif;
@@ -70,7 +67,6 @@ body {
     text-align: center;
 }
 
-/* Contêineres de entrada e botão */
 .input-wrapper {
     display: flex;
     justify-content: center;
@@ -92,7 +88,6 @@ body {
     justify-content: center;
 }
 
-/* Estilos de entrada de texto */
 .input-title {
     flex: 1;
     padding: 10px 15px;
@@ -104,7 +99,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos de botão */
 button {
     padding: 15px 30px;
     font-family: "Inter", sans-serif;
@@ -125,13 +119,14 @@ button {
     background-color: #a1a1a1;
 }
 
-/* Listas */
 ul {
-    list-style-type: none;
-    color: var(--color-text);
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
+    list-style-type:none;
+    color:#f99fe9;
+    font-family:fantasy;
+    font-size: 30px;
     margin: 20px 0;
+    text-transform:uppercase;
+    text-shadow: 2px 2px 4px rgba(145, 217, 227, 0.768)
 }
 
 .result-list {
@@ -142,7 +137,6 @@ ul {
     text-align: center;
 }
 
-/* Botão de sortear título */
 .button-draw {
     display: flex;
     align-items: center;
@@ -159,4 +153,35 @@ ul {
 
 .button-draw:hover {
     background-color: var(--color-button-hover);
+}
+
+#listaAmigos li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+#listaAmigos li button {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    margin-left: 10px;
+    padding: 2px 6px;
+    background-color: #5e66fc;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#listaAmigos li:hover button {
+    visibility: visible;
+    opacity: 1;
+}
+
+#listaAmigos li button:hover {
+    background-color: #c0392b;
 }
