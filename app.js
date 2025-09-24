@@ -63,7 +63,7 @@ function sortearAmigo() {
 
     const animacao = setInterval(() => {
         let nomeAleatorio = amigos[Math.floor(Math.random() * amigos.length)];
-        resultado.innerHTML = `<li>O amigo secreto é: <strong>${nomeAleatorio}</strong></li>`;
+        resultado.innerHTML = `<li>O amigo secreto é: ${nomeAleatorio}</li>`;
         contador += intervalo;
         if (contador >= tempoAnimacao) {
             clearInterval(animacao);
